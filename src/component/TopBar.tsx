@@ -1,12 +1,15 @@
-import {tsx} from "springtype";
+import {IVirtualNode, tsx} from "springtype";
 import waveSvg from '../assets/img/wave.svg'
 import {jss} from "st-jss";
 import {PRIMARY_COLOR} from "../function/Theme";
 import logoWhite from "../assets/img/logo_inverted.svg"
+
 export interface TopBarProps {
     classes?: string;
+    children?: IVirtualNode;
 }
-export const TopBar = ({classes}: TopBarProps) => {
+
+export const TopBar = ({classes, children}: TopBarProps) => {
     const [ownClasses, style] = jss.makeStyles({
         waveBackground: {
             background: `linear-gradient(180deg ,rgba(33,119,194,.4),rgba(33,119,194,.4)),
@@ -42,12 +45,12 @@ export const TopBar = ({classes}: TopBarProps) => {
     return <div className={ownClasses.waveBackground}
     >
         {style}
-        <div className={[ownClasses.container,classes]}>
-            <img src={logoWhite}  width={60}/>
-            <div>
-                <div style={{fontSize: 36}}>The best and easiest to</div>
-                <div  style={{fontSize: 70, fontWeight: 'bolder', textTransform: 'uppercase'}}>build websites</div>
+        <div className={[ownClasses.container, classes]}>
+            <div style={{display: 'flex'}}>
+                <img src={logoWhite} width={45} alt={"logo springtype"}/>
+                <div style={{fontSize: 30, paddingTop: 15, paddingLeft: 5}}>springtype</div>
             </div>
+            {children}
         </div>
     </div>
 }

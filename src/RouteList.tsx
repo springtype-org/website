@@ -10,7 +10,6 @@ export const RouteList = ({className}: RouteListProps) => {
     const containerRef: Ref = {}
 
     NAV.get(MAIN_ROUTE, () => {
-        console.log(containerRef.current);
         containerRef.current.innerHTML = ''
         containerRef.current['$st'].render(<MainPage/>, containerRef.current)
     });
