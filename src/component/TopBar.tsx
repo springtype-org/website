@@ -9,19 +9,12 @@ export interface TopBarProps {
 export const TopBar = ({classes}: TopBarProps) => {
     const [ownClasses, style] = jss.makeStyles({
         waveBackground: {
-            background: `linear-gradient(
-                180deg
-            ,rgba(33,119,194,.4),rgba(33,119,194,.4)),linear-gradient(
-        20deg
-        ,rgba(16,63,105,.09) 35%,transparent 0),linear-gradient(
-        160deg
-        ,rgba(16,63,105,.09) 50%,transparent 0),linear-gradient(
-        130deg
-        ,rgba(16,63,105,.09) 45%,transparent 0),linear-gradient(
-        50deg
-        ,rgba(16,63,105,.09) 90%,transparent 0),linear-gradient(
-        180deg
-        ,${PRIMARY_COLOR.main},${PRIMARY_COLOR.main})`,
+            background: `linear-gradient(180deg ,rgba(33,119,194,.4),rgba(33,119,194,.4)),
+            linear-gradient(20deg, rgba(16,63,105,.09) 35%,transparent 0),
+            linear-gradient(160deg, rgba(16,63,105,.09) 50%,transparent 0),
+            linear-gradient(130deg, rgba(16,63,105,.09) 45%,transparent 0),
+            linear-gradient(50deg, rgba(16,63,105,.09) 90%,transparent 0),
+            linear-gradient(180deg, ${PRIMARY_COLOR.main},${PRIMARY_COLOR.main})`,
             backgroundBlendMode: 'screen,normal,normal,normal,normal,normal',
             backgroundSize: '100% max(700px,100%)',
             position: 'relative',

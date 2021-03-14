@@ -12,7 +12,8 @@ const App = () => {
             backgroundColor: BACKGROUND_COLOR.main,
             fontFamily:'\'Raleway\', sans-serif'
         },
-        root: {display: 'flex',
+        root: {
+            display: 'flex',
             height: '100%',
             flexDirection: 'column',
         },
