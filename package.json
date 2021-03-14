@@ -1,0 +1,27 @@
+{
+  "name": "mannseicher.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist node_modules .cache",
+    "postclean": "yarn install",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url '.'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^1.12.4",
+    "rimraf": "^3.0.2",
+    "springtype": "^3.2.5",
+    "st-jss": "^1.0.2",
+    "st-query": "^1.0.2",
+    "st-route": "^1.0.2",
+    "st-state": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}
