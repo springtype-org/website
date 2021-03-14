@@ -1,28 +1,25 @@
 import {Ref, tsx} from 'springtype';
-import {$} from 'st-query';
-import {ABOUT_ROUTE, DEMO_ROUTE, GUIDES_ROUTE, MAIN_ROUTE, NAV} from "./routes";
+import {MAIN_ROUTE, NAV} from "./routes";
+import {MainPage} from "./page/MainPage";
 
-
-export const RouteList = () => {
+export interface RouteListProps {
+    className: string;
+}
+export const RouteList = ({className}: RouteListProps) => {
 
     const containerRef: Ref = {}
 
     NAV.get(MAIN_ROUTE, () => {
-        $(containerRef.current).html(<div>main route</div>);
-    });
-    NAV.get(DEMO_ROUTE, () => {
-        $(containerRef.current).html(<div>demo</div>);
-    });
-    NAV.get(GUIDES_ROUTE, () => {
-        $(containerRef.current).html(<div>guides</div>);
-    });
-    NAV.get(ABOUT_ROUTE, () => {
-        $(containerRef.current).html(<div>about</div>);
+        console.log(containerRef.current);
+        containerRef.current.innerHTML = ''
+        containerRef.current['$st'].render(<MainPage/>, containerRef.current)
     });
 
     const onMount = () => {
         NAV.match(location.search)
     }
 
-    return <div ref={containerRef} onMount={onMount}>Loading...</div>;
+    return <div class={className} ref={containerRef} onMount={onMount}>
+        Loading...
+    </div>;
 };

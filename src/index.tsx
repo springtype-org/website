@@ -1,5 +1,4 @@
-import {tsx, render} from "springtype";
-import {Layout} from "./layout/Layout";
+import {render, tsx} from "springtype";
 import {RouteList} from "./RouteList";
 import {BACKGROUND_COLOR} from "./function/Theme";
 import {jss} from "st-jss";
@@ -10,25 +9,23 @@ const App = () => {
             margin: 0,
             padding: 0,
             backgroundColor: BACKGROUND_COLOR.main,
-            fontFamily:'\'Raleway\', sans-serif'
+            fontFamily: '\'Raleway\', sans-serif'
         },
-        root: {
+        router: {
             display: 'flex',
             height: '100%',
-            flexDirection: 'column',
-        },
+            flexDirection: 'column'
+        }
     });
 
     //add font and style to body
     const bodyEl = document.getElementById('body');
     bodyEl.classList.add(classes.body)
 
-    return <div class={classes.root}>
+    return <fragment>
         {style}
-        <Layout>
-            <RouteList/>
-        </Layout>
-    </div>
+        <RouteList className={classes.router}/>
+    </fragment>
 }
 
 render(<App/>);
