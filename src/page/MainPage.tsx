@@ -1,6 +1,6 @@
 import {tsx} from "springtype";
 import {jss} from "st-jss";
-import {TopBar} from "../component/TopBar";
+import {TopBar} from "../component/topbar/TopBar";
 import {Footer} from "../component/Footer";
 
 export const MainPage = () => {
