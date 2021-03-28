@@ -20,6 +20,8 @@ jobs:
     needs: [build]
     name: gh-pages
     runs-on: ubuntu-latest
+    # only on master
+    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
