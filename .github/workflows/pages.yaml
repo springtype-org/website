@@ -32,12 +32,8 @@ jobs:
         with:
           name: artifact
           path: dist
-      - name: Install dependencies
-        run: yarn
-      - name: deploy github pages
-        run: yarn prepages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs  # default: public
+          publish_dir: ./dist  # default: public
