@@ -24,6 +24,9 @@ export const RouteList = ({className}: RouteListProps) => {
         containerRef.current['$st'].render(<fragment />, containerRef.current)
     });
 
+    const onMount = () => {
+        NAV.match(location.search)
+    }
     const onLocationChange = () => {
         NAV.match(location.search)
     }
@@ -31,7 +34,7 @@ export const RouteList = ({className}: RouteListProps) => {
     //rerender if location change
     window.addEventListener('locationchange', onLocationChange)
 
-    return <div class={className} ref={containerRef} onMount={onLocationChange}>
+    return <div class={className} ref={containerRef} onMount={onMount}>
         Loading...
     </div>;
 };
