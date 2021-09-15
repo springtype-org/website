@@ -1,6 +1,6 @@
 import {IVirtualNode, Ref, tsx} from "springtype";
 import {jss} from "st-jss";
-import {Button} from "./Button";
+import {Link} from "./Link";
 
 export interface TopBarDropDownButtonProps {
     label: IVirtualNode | string;
@@ -21,7 +21,7 @@ export const Dropdown = ({label, children}: TopBarDropDownButtonProps) => {
 
     return <div>
         {style}
-        <Button
+        <Link
             onClick={() => {
                 containerRef.current.classList.toggle(classes.hide)
             }}
@@ -34,7 +34,7 @@ export const Dropdown = ({label, children}: TopBarDropDownButtonProps) => {
             }
         >
             {label}
-        </Button>
+        </Link>
         <div ref={containerRef} class={classes.hide}>
             <div class={[classes.dropdown]}>
                 {children}

@@ -1,6 +1,5 @@
 import {IVirtualNode, tsx} from "springtype";
-import {jss} from "st-jss";
-import {makeStyles} from "../../function/makeStyles";
+import {makeStyles} from "../../../function/makeStyles";
 
 export interface TopBarButtonProps {
     startIcon?: IVirtualNode;
@@ -24,7 +23,7 @@ const classes = makeStyles({
     }
 });
 
-export const Button = ({onClick, children, startIcon, endIcon}: TopBarButtonProps) => {
+export const Link = ({onClick, children, startIcon, endIcon}: TopBarButtonProps) => {
     return <a onClick={onClick} class={classes.root}>
         {startIcon}
         {children}

@@ -1,8 +1,7 @@
 import {IVirtualNode, tsx} from "springtype";
 import waveSvg from '../../assets/img/wave.svg'
 import {PRIMARY_COLOR} from "../../function/Theme";
-import logoGithub from "../../assets/img/github_logo.svg"
-import {Button} from "./Button";
+import {Link} from "./components/Link";
 import {history} from "../../router/history";
 import {
     DOC_ROUTE,
@@ -14,10 +13,12 @@ import {
     LIBRARY_ROUTER_ROUTE
 } from "../../routes";
 import {Logo} from "../Logo";
-import {Dropdown} from "./Dropdown";
+import {Dropdown} from "./components/Dropdown";
 import {Menu} from "./Menu";
 import {MenuItem} from "./MenuItem";
 import {makeStyles} from "../../function/makeStyles";
+import {GithubLink} from "./components/GithubLink";
+import {MenuIcon} from "./components/menu/MenuIcon";
 
 export interface TopBarProps {
     classes?: string;
@@ -42,7 +43,7 @@ const ownClasses = makeStyles({
             position: 'absolute',
             bottom: 0,
             left: 0,
-            height: '75px',
+            height: '80px',
             backgroundImage: "url(" + waveSvg + ")",
             width: '100%',
             zIndex: -1,
@@ -50,66 +51,81 @@ const ownClasses = makeStyles({
             backgroundRepeat: 'repeat-x',
             backgroundPosition: 'bottom',
         },
-
     },
     container: {
-        color: '#fff'
-    }
+        color: '#fff',
+    },
+    menuDesktop: {
+        '@media (min-width: 1024px)': {
+            display: 'flex'
+        },
+        '@media (max-width: 1024px)': {
+            display: 'none'
+        },
+    },
+    menuTabletMobile: {
+        '@media (min-width: 1024px)': {
+            display: 'none'
+        },
+        '@media (max-width: 1024px)': {
+            display: 'flex'
+        },
+    },
 })
 export const TopBar = ({classes, children}: TopBarProps) => {
-
     return <div className={ownClasses.waveBackground}>
         <div className={[ownClasses.container, classes]}>
             <div style={{display: 'flex'}}>
                 <Logo/>
-                <Dropdown label={"Library"}>
-                    <Menu>
-                        <MenuItem
-                            title={"springtype"}
-                            subTitle={"The core framework livecycle"}
-                            onClick={() => history.push(LIBRARY_CORE_ROUTE)}
-                        />
-                        <MenuItem
-                            title={"st-router"}
-                            subTitle={"The router library"}
-                            onClick={() => history.push(LIBRARY_ROUTER_ROUTE)}
-                        />
-                        <MenuItem
-                            title={"st-query"}
-                            subTitle={"An library like jQuery"}
-                            onClick={() => history.push(LIBRARY_QUERY_ROUTE)}
-                        />
-                        <MenuItem
-                            title={"st-jss"}
-                            subTitle={"Scoped css classes animations"}
-                            onClick={() => history.push(LIBRARY_JSS_ROUTE)}
-                        />
-                        <MenuItem
-                            title={"st-i18n"}
-                            subTitle={"Translate you application"}
-                            onClick={() => history.push(LIBRARY_I18N_ROUTE)}
-                        />
-                    </Menu>
-                </Dropdown>
-                <Button onClick={() => {
-                    history.push(GUIDES_ROUTE)
-                }}>
-                    Guides
-                </Button>
-                <Button onClick={() => {
-                    history.push(DOC_ROUTE)
-                }}>
-                    Documentation
-                </Button>
-                <Button onClick={() => {
-                    window.open('https://github.com/springtype-org')
-                }} startIcon={<img width={30} height={60} src={logoGithub} alt={'logo github'}
-                                   style={{marginRight: 5}}/>}>
-                    Follow us on GitHub
-                </Button>
-
+                <div class={ownClasses.menuDesktop}>
+                    <Dropdown label={"Library"}>
+                        <Menu>
+                            <MenuItem
+                                title={"springtype"}
+                                subTitle={"The core framework livecycle"}
+                                onClick={() => history.push(LIBRARY_CORE_ROUTE)}
+                            />
+                            <MenuItem
+                                title={"st-router"}
+                                subTitle={"The router library"}
+                                onClick={() => history.push(LIBRARY_ROUTER_ROUTE)}
+                            />
+                            <MenuItem
+                                title={"st-query"}
+                                subTitle={"An library like jQuery"}
+                                onClick={() => history.push(LIBRARY_QUERY_ROUTE)}
+                            />
+                            <MenuItem
+                                title={"st-jss"}
+                                subTitle={"Scoped css classes animations"}
+                                onClick={() => history.push(LIBRARY_JSS_ROUTE)}
+                            />
+                            <MenuItem
+                                title={"st-i18n"}
+                                subTitle={"Translate you application"}
+                                onClick={() => history.push(LIBRARY_I18N_ROUTE)}
+                            />
+                        </Menu>
+                    </Dropdown>
+                    <Link onClick={() => {
+                        history.push(GUIDES_ROUTE)
+                    }}>
+                        Guides
+                    </Link>
+                    <Link onClick={() => {
+                        history.push(DOC_ROUTE)
+                    }}>
+                        Documentation
+                    </Link>
+                    <GithubLink/>
+                </div>
+                <div class={ownClasses.menuTabletMobile}>
+                    <MenuIcon/>
+                </div>
             </div>
-            {children}
+            <div>
+                {children}
+            </div>
         </div>
     </div>
 }

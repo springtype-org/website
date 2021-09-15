@@ -5,6 +5,7 @@ export const NAV = route();
 export const MAIN_ROUTE = '/'
 
 export const DOC_ROUTE = '/documentation'
+export const NOT_FOUND_ROUTE = '/404'
 
 export const GUIDES_ROUTE = '/guides'
 

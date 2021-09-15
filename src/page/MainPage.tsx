@@ -15,27 +15,39 @@ const classes = makeStyles({
             paddingRight: 'max(1.5rem,calc(50vw - 640px + 1.5rem))',
         },
     },
-    children: {
+    content: {
         flex: 1
+    },
+    headerWrapper: {marginTop: 45, textAlign: 'center'},
+    header: {
+        '@media (min-width: 640px)': {
+            fontSize: 30
+        },
+        '@media (max-width: 640px)': {
+          fontSize: 22
+        },
+    },
+    subHeader: {
+        fontWeight: 'bolder', textTransform: 'uppercase',
+        '@media (min-width: 640px)': {
+            fontSize: 60
+        },
+        '@media (max-width: 640px)': {
+          fontSize: 44
+        },
     }
 })
+
 export const MainPage = () => {
     return <fragment>
         <TopBar classes={classes.mainContainer}>
-            <div style={{marginTop: 45}}>
-                <div style={{fontSize: 30}}>The best and easiest to</div>
-                <div style={{fontSize: 60, fontWeight: 'bolder', textTransform: 'uppercase'}}>build websites</div>
-                <div>Build websites with known webtechnologie:</div>
-                <ul>
-                    <li>Use browser build in dom api</li>
-                    <li>Use typescript with tsx</li>
-                    <li>Use simple css</li>
-                    <li>Easy integrate third party libraries.</li>
-                </ul>
+            <div class={classes.headerWrapper}>
+                <div class={classes.header}>The best and easiest way to</div>
+                <div class={classes.subHeader}>build website</div>
             </div>
         </TopBar>
-        <div class={[classes.mainContainer, classes.children]}>
-            "content"
+        <div class={[classes.mainContainer, classes.content]}>
+            "content" dddd d dd
         </div>
         <Footer classes={classes.mainContainer}/>
     </fragment>
